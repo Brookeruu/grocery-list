@@ -1,31 +1,30 @@
 
 $(document).ready(function() {
-  $("#formOne").submit(function(event) {
-    // var person1Input = $("input#person1").val();
-    // var person2Input = $("input#person2").val();
-    // var animalInput= $("input#animal").val();
-    // var exclamationInput = $("input#exclamation").val();
-    // var verbInput = $("input#verb").val();
-    // var nounInput = $("input#noun").val();
+  $("#form").submit(function(event) {
+    event.preventDefault();
 
-    var blanks = ["person1", "person2", "animal", "exclamation", "verb", "noun"];
-
-    blanks.forEach(function(blank) {
-      var userInput = $("input#" + blank).val();
-      $("." + blank).text(userInput);
+    var lists = ["drinks","snacks","veg"];
+    var outputs = [];
+    lists.forEach(function(list) {
+      var userinput = $("input#" + list).val();
+      outputs.push(userinput)
     });
 
-    // $(".person1").text(person1Input);
-    // $(".person2").text(person2Input);
-    // $(".animal").text(animalInput);
-    // $(".exclamation").text(exclamationInput);
-    // $(".verb").text(verbInput);
-    // $(".noun").text(nounInput);
+    outputs.forEach(function(element) {
+      $(".list").append("<li>" + element + "</li>")
+    });
+    var result = outputs.map(function(output){
+      return output.toUpperCase();
+    });
+    result.map(function(element) {
+      $(".reciept").append("<li>" + element + "</li>")
 
-    $("#story").show();
-
-    $(".wholeForm").hide();
-
-    event.preventDefault();
+    });
+  });    // $(".list").append(output + " ");
   });
-});
+
+
+// variable with empty array
+// loop through something and get values
+// push the value into array
+// when loop is finished, return the array
